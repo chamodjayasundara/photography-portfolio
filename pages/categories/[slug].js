@@ -10,6 +10,11 @@ export default function CategoryPage() {
   const { slug } = router.query;
   const category = slug?.toLowerCase();
 
+  // Capitalize first letter helper
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   // Collect all photos from all albums matching the category
   const photos = albums.flatMap(album =>
     album.photos
@@ -23,12 +28,16 @@ export default function CategoryPage() {
 
   return (
     <main className="p-10">
-      <h1 className="text-3xl font-semibold mb-6">{slug} Photography</h1>
+      <h1 className="text-3xl font-semibold mb-6">
+        {capitalizeFirstLetter(category)} Photography
+      </h1>
+
       <PhotoAlbum
         layout="rows"
         photos={photos}
         onClick={({ index }) => setIndex(index)}
       />
+
       <Lightbox
         slides={photos}
         open={index >= 0}

@@ -1,3 +1,4 @@
+// ONLY export the albums array
 export const albums = [
   {
     slug: "modern-villa",
