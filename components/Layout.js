@@ -1,21 +1,24 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import { FiMenu, FiX } from "react-icons/fi"; // Hamburger & close icons
-import { motion, AnimatePresence } from "framer-motion"; // For smooth animation
+import { FiMenu, FiX } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Layout({ children }) {
-  const [isOpen, setIsOpen] = useState(false); // Mobile side menu
-  const [dropdownOpen, setDropdownOpen] = useState(false); // Categories dropdown
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const categories = ["Architecture", "Product", "Food", "Lifestyle", "Travel"];
 
-  // Capitalize first letter helper
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  // Transparent navbar that becomes solid on scroll
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  // Close desktop dropdown when clicking outside
+  // Close dropdown when clicking outside (desktop)
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -26,141 +29,174 @@ export default function Layout({ children }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const capitalizeFirstLetter = (string) =>
+    string.charAt(0).toUpperCase() + string.slice(1);
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen font-sans bg-white">
       {/* Navbar */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header
+        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+        }`}
+      >
         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-          <Link href="/" className="text-xl font-bold text-gray-800">
-            CJ Photography
+          <Link
+            href="/"
+            className={`text-xl font-semibold tracking-tight transition-colors ${
+              scrolled ? "text-gray-800" : "text-white"
+            }`}
+          >
+            Chamod Jayasundara
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
-            <Link href="/projects">Projects</Link>
+          <div
+            className={`hidden md:flex items-center space-x-8 font-medium ${
+              scrolled ? "text-gray-800" : "text-white"
+            }`}
+          >
+            <Link href="/projects" className="hover:opacity-70 transition">
+              Projects
+            </Link>
 
-            {/* Desktop Categories Dropdown */}
+            {/* Categories Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="cursor-pointer"
+                className="hover:opacity-70 transition"
               >
                 Categories
               </button>
 
-              {dropdownOpen && (
-                <div className="absolute right-0 mt-2 bg-white border py-2 shadow-lg w-40">
-                  {categories.map((cat) => (
-                    <Link
-                      key={cat}
-                      href={`/categories/${cat.toLowerCase()}`}
-                      className="block px-4 py-1 hover:bg-gray-100"
-                      onClick={() => setDropdownOpen(false)}
-                    >
-                      {capitalizeFirstLetter(cat)}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 bg-white text-gray-700 border rounded-md shadow-lg w-44"
+                  >
+                    {categories.map((cat) => (
+                      <Link
+                        key={cat}
+                        href={`/categories/${cat.toLowerCase()}`}
+                        className="block px-4 py-2 hover:bg-gray-100"
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        {capitalizeFirstLetter(cat)}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/contact" className="hover:opacity-70 transition">
+              Contact
+            </Link>
           </div>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(true)}>
-              <FiMenu size={28} />
+              <FiMenu
+                size={28}
+                className={`transition ${
+                  scrolled ? "text-gray-800" : "text-white"
+                }`}
+              />
             </button>
           </div>
         </nav>
-
-        {/* Mobile Side Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              className="fixed inset-0 z-50 bg-black/50"
-              onClick={() => setIsOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <motion.div
-                className="fixed right-0 top-0 h-full w-64 bg-white shadow-lg p-6 overflow-y-auto"
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "tween", duration: 0.3 }}
-              >
-                <div className="flex justify-end mb-8">
-                  <button onClick={() => setIsOpen(false)}>
-                    <FiX size={28} />
-                  </button>
-                </div>
-
-                <nav className="flex flex-col text-gray-700 font-medium">
-                  <Link
-                    href="/projects"
-                    onClick={() => setIsOpen(false)}
-                    className="py-2"
-                  >
-                    Projects
-                  </Link>
-
-                  {/* Mobile Categories Dropdown */}
-                  <div className="flex flex-col">
-                    <button
-                      className="w-full text-left py-2 flex justify-between items-center"
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
-                    >
-                      Categories
-                      <span className="ml-2">{dropdownOpen ? "▲" : "▼"}</span>
-                    </button>
-
-                    <AnimatePresence>
-                      {dropdownOpen && (
-                        <motion.div
-                          className="flex flex-col pl-4 mt-2 space-y-1"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {categories.map((cat) => (
-                            <Link
-                              key={cat}
-                              href={`/categories/${cat.toLowerCase()}`}
-                              className="py-1 hover:bg-gray-100"
-                            >
-                              {capitalizeFirstLetter(cat)}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <Link
-                    href="/contact"
-                    onClick={() => setIsOpen(false)}
-                    className="py-2"
-                  >
-                    Contact Us
-                  </Link>
-                </nav>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
 
-      {/* Main content */}
+      {/* Mobile Slide-In Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              className="fixed right-0 top-0 h-full w-72 bg-white shadow-lg p-6 overflow-y-auto"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-end mb-8">
+                <button onClick={() => setIsOpen(false)}>
+                  <FiX size={28} />
+                </button>
+              </div>
+
+              <nav className="flex flex-col space-y-3 text-gray-800 font-medium">
+                <Link href="/projects" onClick={() => setIsOpen(false)}>
+                  Projects
+                </Link>
+
+                <div>
+                  <button
+                    className="w-full text-left py-2 flex justify-between items-center"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    Categories
+                    <span className="ml-2">{dropdownOpen ? "▲" : "▼"}</span>
+                  </button>
+
+                  <AnimatePresence>
+                    {dropdownOpen && (
+                      <motion.div
+                        className="pl-4 mt-2 flex flex-col space-y-2"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {categories.map((cat) => (
+                          <Link
+                            key={cat}
+                            href={`/categories/${cat.toLowerCase()}`}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setDropdownOpen(false);
+                            }}
+                            className="block py-1 hover:underline"
+                          >
+                            {capitalizeFirstLetter(cat)}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  Contact
+                </Link>
+              </nav>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Page Content */}
       <main className="flex-grow">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 text-center py-6 mt-10">
-        © {new Date().getFullYear()} Chamod Jayasundara Photography. All rights reserved.
+      <footer className="bg-black text-gray-400 text-center py-8 mt-20">
+        <div className="container mx-auto px-6">
+          <p className="text-sm tracking-wide">
+            © {new Date().getFullYear()} Chamod Jayasundara Photography
+          </p>
+          <p className="text-xs mt-1">All Rights Reserved</p>
+        </div>
       </footer>
     </div>
   );
