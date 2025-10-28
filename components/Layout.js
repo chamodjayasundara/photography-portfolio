@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -7,6 +9,7 @@ export default function Layout({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const router = useRouter();
 
   const categories = ["Architecture", "Product", "Food", "Lifestyle", "Travel"];
 
@@ -32,31 +35,41 @@ export default function Layout({ children }) {
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
 
+  // Check if a path is active
+  const isActivePath = (path) => router.pathname === path;
+  const isActiveCategoryPath = () => router.pathname.startsWith('/categories');
+
   return (
     <div className="flex flex-col min-h-screen font-sans bg-white">
       {/* Navbar */}
       <header
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+          scrolled ? "bg-black/95 backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
       >
-        <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-          <Link
-            href="/"
-            className={`text-xl font-semibold tracking-tight transition-colors ${
-              scrolled ? "text-gray-800" : "text-white"
-            }`}
-          >
-            Chamod Jayasundara
+        <nav className="container mx-auto flex justify-between items-center py-3 px-6">
+          <Link href="/" className="block" aria-label="Home">
+            <Image
+              src="/images/Chamod_Jayasundara_Logo.png"
+              alt="Chamod Jayasundara logo"
+              width={200}
+              height={32}
+              priority
+              className={`h-16 w-auto md:h-20 transition ${scrolled ? "" : ""}`}
+            />
           </Link>
 
           {/* Desktop Menu */}
           <div
             className={`hidden md:flex items-center space-x-8 font-medium ${
-              scrolled ? "text-gray-800" : "text-white"
+              scrolled ? "text-white" : "text-white"
             }`}
           >
-            <Link href="/projects" className="hover:opacity-70 transition">
+            <Link 
+              href="/projects" 
+              className="hover:opacity-70 transition"
+              style={isActivePath('/projects') ? { color: '#f15a24' } : {}}
+            >
               Projects
             </Link>
 
@@ -65,6 +78,7 @@ export default function Layout({ children }) {
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="hover:opacity-70 transition"
+                style={isActiveCategoryPath() ? { color: '#f15a24' } : {}}
               >
                 Categories
               </button>
@@ -93,7 +107,11 @@ export default function Layout({ children }) {
               </AnimatePresence>
             </div>
 
-            <Link href="/contact" className="hover:opacity-70 transition">
+            <Link 
+              href="/contact" 
+              className="hover:opacity-70 transition"
+              style={isActivePath('/contact') ? { color: '#f15a24' } : {}}
+            >
               Contact
             </Link>
           </div>
@@ -104,7 +122,7 @@ export default function Layout({ children }) {
               <FiMenu
                 size={28}
                 className={`transition ${
-                  scrolled ? "text-gray-800" : "text-white"
+                  scrolled ? "text-white" : "text-white"
                 }`}
               />
             </button>
@@ -137,7 +155,11 @@ export default function Layout({ children }) {
               </div>
 
               <nav className="flex flex-col space-y-3 text-gray-800 font-medium">
-                <Link href="/projects" onClick={() => setIsOpen(false)}>
+                <Link 
+                  href="/projects" 
+                  onClick={() => setIsOpen(false)}
+                  style={isActivePath('/projects') ? { color: '#f15a24' } : {}}
+                >
                   Projects
                 </Link>
 
@@ -145,6 +167,7 @@ export default function Layout({ children }) {
                   <button
                     className="w-full text-left py-2 flex justify-between items-center"
                     onClick={() => setDropdownOpen(!dropdownOpen)}
+                    style={isActiveCategoryPath() ? { color: '#f15a24' } : {}}
                   >
                     Categories
                     <span className="ml-2">{dropdownOpen ? "▲" : "▼"}</span>
@@ -177,7 +200,11 @@ export default function Layout({ children }) {
                   </AnimatePresence>
                 </div>
 
-                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                <Link 
+                  href="/contact" 
+                  onClick={() => setIsOpen(false)}
+                  style={isActivePath('/contact') ? { color: '#f15a24' } : {}}
+                >
                   Contact
                 </Link>
               </nav>
@@ -190,7 +217,7 @@ export default function Layout({ children }) {
       <main className="flex-grow">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-400 text-center py-8 mt-20">
+      <footer className="bg-black text-gray-400 text-center py-8">
         <div className="container mx-auto px-6">
           <p className="text-sm tracking-wide">
             © {new Date().getFullYear()} Chamod Jayasundara Photography

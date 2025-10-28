@@ -1,6 +1,7 @@
 import { albums } from "@/data/albums";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import BrandsCarousel from "@/components/BrandsCarousel";
 
 export default function Home() {
   return (
@@ -79,48 +80,78 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Brands Carousel */}
+      <BrandsCarousel />
+
       {/* Featured Projects */}
-      <section id="featured" className="py-24 px-6 container mx-auto">
-        <motion.h2
-          className="text-3xl md:text-4xl font-semibold mb-12 text-center"
+      <section id="featured" className="relative min-h-screen bg-black py-32 px-6">
+        {/* Animated title that slides up */}
+        <motion.div
+          className="relative z-10 mb-24"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-light text-center text-white">
+            Featured <span style={{ color: '#f15a24' }}>Projects</span>
+          </h2>
+        </motion.div>
+
+        {/* Albums that scroll up two at a time side by side */}
+        <div className="relative z-10 container mx-auto max-w-7xl space-y-12">
+          {albums.reduce((rows, album, i) => {
+            if (i % 2 === 0) rows.push([album]);
+            else rows[rows.length - 1].push(album);
+            return rows;
+          }, []).map((row, rowIndex) => (
+            <div key={rowIndex} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {row.map((album, colIndex) => (
+                <motion.div
+                  key={album.slug}
+                  initial={{ opacity: 0, x: colIndex === 0 ? -100 : 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.8, delay: colIndex * 0.2 }}
+                >
+                  <Link href={`/projects/${album.slug}`} passHref>
+                    <div className="group overflow-hidden rounded-2xl shadow-2xl relative cursor-pointer">
+                      <img
+                        src={album.photos[0].src}
+                        alt={album.title}
+                        className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                      <div className="absolute bottom-8 left-8 right-8 text-white">
+                        <h3 className="font-semibold text-2xl mb-2">{album.title}</h3>
+                        <p className="text-sm opacity-90">{album.description}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* View All Projects Button */}
+        <motion.div
+          className="relative z-10 mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Featured Projects
-        </motion.h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {albums.map((album, i) => (
-            <motion.div
-              key={album.slug}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-            >
-              <Link href={`/projects/${album.slug}`} passHref>
-                <div className="group overflow-hidden rounded-2xl shadow-lg relative cursor-pointer">
-                  <img
-                    src={album.photos[0].src}
-                    alt={album.title}
-                    className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <h3 className="font-semibold text-lg">{album.title}</h3>
-                    <p className="text-sm opacity-80">{album.description}</p>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+          <Link href="/projects">
+            <button className="bg-[#f15a24] text-white px-10 py-4 rounded-full hover:bg-[#d14b1a] transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-xl">
+              View All Projects
+            </button>
+          </Link>
+        </motion.div>
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 px-6 bg-gray-50 text-center">
+      <section className="min-h-[70vh] py-32 px-6 bg-gray-50 text-center flex flex-col justify-center">
         <motion.h2
           className="text-3xl md:text-4xl font-semibold mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -128,7 +159,10 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Explore Categories
+           
+          <h2 className="text-4xl md:text-5xl font-light text-center text-gray-800">
+            Explore <span style={{ color: '#f15a24' }}>Categories</span>
+          </h2>
         </motion.h2>
 
         <motion.div

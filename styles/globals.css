@@ -88,6 +88,9 @@ body {
 
 .hero-top-right {
   max-width: 360px;
+  /* Subtle size bump across viewports */
+  font-size: clamp(13px, 1.7vw, 16px);
+  line-height: 1.5;
 }
 
 .hero-divider-line {
