@@ -40,14 +40,14 @@ export default function Layout({ children }) {
   const isActiveCategoryPath = () => router.pathname.startsWith('/categories');
 
   return (
-    <div className="flex flex-col min-h-screen font-sans bg-white">
+    <div className="flex flex-col min-h-screen font-sans bg-white overflow-x-hidden">
       {/* Navbar */}
       <header
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        className={`fixed w-full top-0 z-50 transition-all duration-300 border-none ${
           scrolled ? "bg-black/95 backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
       >
-        <nav className="container mx-auto flex justify-between items-center py-3 px-6">
+        <nav className="w-full flex justify-between items-center py-3 px-6 border-none max-w-full">
           <Link href="/" className="block" aria-label="Home">
             <Image
               src="/images/Chamod_Jayasundara_Logo.png"
@@ -118,12 +118,13 @@ export default function Layout({ children }) {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(true)}>
+            <button 
+              onClick={() => setIsOpen(true)}
+              className="bg-black/50 backdrop-blur-sm p-2 rounded-lg"
+            >
               <FiMenu
                 size={28}
-                className={`transition ${
-                  scrolled ? "text-white" : "text-white"
-                }`}
+                className="text-white transition"
               />
             </button>
           </div>
@@ -141,7 +142,7 @@ export default function Layout({ children }) {
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              className="fixed right-0 top-0 h-full w-72 bg-white shadow-lg p-6 overflow-y-auto"
+              className="fixed right-0 top-0 h-full w-72 bg-white shadow-2xl p-6 overflow-y-auto border-none"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

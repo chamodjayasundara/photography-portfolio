@@ -153,16 +153,13 @@ export default function Home() {
       {/* Categories Section */}
       <section className="min-h-[70vh] py-32 px-6 bg-gray-50 text-center flex flex-col justify-center">
         <motion.h2
-          className="text-3xl md:text-4xl font-semibold mb-12"
+          className="text-4xl md:text-5xl font-light text-center text-gray-800 mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-           
-          <h2 className="text-4xl md:text-5xl font-light text-center text-gray-800">
-            Explore <span style={{ color: '#f15a24' }}>Categories</span>
-          </h2>
+          Explore <span style={{ color: '#f15a24' }}>Categories</span>
         </motion.h2>
 
         <motion.div
