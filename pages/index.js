@@ -100,7 +100,7 @@ export default function Home() {
 
         {/* Albums that scroll up two at a time side by side */}
         <div className="relative z-10 container mx-auto max-w-7xl space-y-12">
-          {albums.reduce((rows, album, i) => {
+          {albums.slice(0, 4).reduce((rows, album, i) => {
             if (i % 2 === 0) rows.push([album]);
             else rows[rows.length - 1].push(album);
             return rows;

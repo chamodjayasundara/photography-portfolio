@@ -11,6 +11,11 @@ export default function BrandsCarousel() {
     { name: "Brand 4", logo: "/images/brands/heritage-collection-black.jpg" },
     { name: "Brand 5", logo: "/images/brands/golf.png" },
     { name: "Brand 6", logo: "/images/brands/ellerton.png" },
+    { name: "Brand 7", logo: "/images/brands/aneehara.jpeg" },
+    { name: "Brand 8", logo: "/images/brands/terrace.jpeg" },
+    { name: "Brand 9", logo: "/images/brands/hillparadise.jpeg" },
+    { name: "Brand 10", logo: "/images/brands/bowatte.jpg" },
+
     // Add more brands as needed
   ];
 
@@ -18,20 +23,27 @@ export default function BrandsCarousel() {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    let scrollAmount = 0;
-    const scrollStep = 1;
-    const scrollInterval = 30;
+    // Smooth, frame-based fast auto-scroll (no manual override)
+    let rafId;
+    let lastTs = performance.now();
+    const SPEED_PX_PER_SEC = 200; // much faster auto-scroll
 
-    const scroll = setInterval(() => {
-      scrollAmount += scrollStep;
-      scrollContainer.scrollLeft = scrollAmount;
+    const tick = (ts) => {
+      const dt = (ts - lastTs) / 1000; // seconds
+      lastTs = ts;
 
-      if (scrollAmount >= scrollContainer.scrollWidth / 2) {
-        scrollAmount = 0;
-      }
-    }, scrollInterval);
+      const half = scrollContainer.scrollWidth / 2 || 1;
+      const next = (scrollContainer.scrollLeft + SPEED_PX_PER_SEC * dt) % half;
+      scrollContainer.scrollLeft = next;
 
-    return () => clearInterval(scroll);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -41,7 +53,10 @@ export default function BrandsCarousel() {
           <span style={{ color: '#f15a24' }}>Brands</span> I've Worked With
         </h2>
 
-        <div className="overflow-hidden" ref={scrollRef}>
+        <div
+          className="overflow-hidden select-none"
+          ref={scrollRef}
+        >
           <div className="flex items-center gap-12 md:gap-16" style={{ width: 'max-content' }}>
             {/* Duplicate brands for infinite scroll effect */}
             {[...brands, ...brands].map((brand, index) => (
@@ -61,6 +76,7 @@ export default function BrandsCarousel() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }

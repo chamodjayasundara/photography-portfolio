@@ -1,24 +1,55 @@
 // ONLY export the albums array
 export const albums = [
   {
-    slug: "modern-villa",
-    title: "Modern Villa",
-    description: "Mixed-category photos from a modern villa.",
+    slug: "Golf-resort",
+    title: "Victoria Golf Resort",
+    description: "Assignment type : Resort Photography",
+    albumCategory: "Properties",
+    date: "2025-08-15",
     photos: [
-      { src: "/images/albums/modern-villa/1.jpg", title: "Front view", category: "Architecture" },
-      { src: "/images/albums/modern-villa/2.jpg", title: "Living room", category: "Architecture" },
-      { src: "/images/albums/modern-villa/3.jpg", title: "Chef in kitchen", category: "Food" },
-      { src: "/images/albums/modern-villa/4.jpg", title: "Family enjoying coffee", category: "Lifestyle" }
+      { src: "/images/albums/Golf-resort/1.jpg", category: "Architecture" },
+      { src: "/images/albums/Golf-resort/2.jpg", category: "Architecture" },
+      { src: "/images/albums/Golf-resort/3.jpg", category: "Food" },
+      { src: "/images/albums/Golf-resort/4.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/5.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/6.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/7.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/8.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/9.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/10.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Golf-resort/11.jpg", category: "Lifestyle" }
     ]
   },
   {
-    slug: "city-life",
-    title: "City Life",
-    description: "City lifestyle and food photography.",
+    slug: "queens",
+    title: "Queen's Hotel Kandy",
+    description: "Assignment type : Hotel Photography",
+    albumCategory: "Properties",
+    date: "2024-11-02",
     photos: [
-      { src: "/images/albums/city-life/1.jpg", title: "Street coffee", category: "Food" },
-      { src: "/images/albums/city-life/2.jpg", title: "Evening walk", category: "Lifestyle" },
-      { src: "/images/albums/city-life/3.jpg", title: "Modern architecture", category: "Architecture" }
+      { src: "/images/albums/queens/1.jpg", category: "Food" },
+      { src: "/images/albums/queens/2.jpg", category: "Lifestyle" },
+      { src: "/images/albums/queens/3.jpg", category: "Architecture" }
+    ]
+  },
+  {
+    slug: "Legacy",
+    title: "Legacy by Nelson Fernando",
+    description: "Assignment type : Villa Photography",
+    albumCategory: "Properties",
+    date: "2024-06-18",
+    photos: [
+      { src: "/images/albums/Legacy/1.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/2.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/3.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/4.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/5.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/6.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/7.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/8.jpg", category: "Lifestyle" },
+      { src: "/images/albums/Legacy/9.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/10.jpg", category: "Architecture" },
+      { src: "/images/albums/Legacy/11.jpg", category: "Architecture" }
     ]
   }
 ];
