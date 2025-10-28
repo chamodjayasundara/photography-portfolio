@@ -7,7 +7,6 @@ const CATEGORIES = ["All", "Properties", "Travel", "Product", "Lifestyle", "Food
 export default function Projects() {
   const [query, setQuery] = useState("");
   const [activeCat, setActiveCat] = useState("All");
-  const [sortByRecent, setSortByRecent] = useState(true);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -25,12 +24,8 @@ export default function Projects() {
       );
     }
 
-    if (sortByRecent) {
-      list.sort((a, b) => new Date(b.date) - new Date(a.date));
-    }
-
     return list;
-  }, [query, activeCat, sortByRecent]);
+  }, [query, activeCat]);
 
   return (
     <main className="min-h-screen bg-black text-white py-24 px-6">
@@ -39,7 +34,7 @@ export default function Projects() {
           All <span style={{ color: "#f15a24" }}>Projects</span>
         </h1>
 
-        {/* Search + Sort */}
+        {/* Search */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <div className="flex-1">
             <input
@@ -48,17 +43,6 @@ export default function Projects() {
               placeholder="Search projects..."
               className="w-full bg-zinc-900 text-white rounded-full px-5 py-3 outline-none border border-zinc-700 focus:border-zinc-500"
             />
-          </div>
-
-          <div className="flex items-center gap-3">
-            <label className="text-sm opacity-80">Sort:</label>
-            <button
-              onClick={() => setSortByRecent((s) => !s)}
-              className="px-4 py-2 rounded-full border border-zinc-700 hover:border-zinc-500 bg-zinc-900"
-              title="Toggle Most Recent"
-            >
-              {sortByRecent ? "Most Recent" : "Default"}
-            </button>
           </div>
         </div>
 
