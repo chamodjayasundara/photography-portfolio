@@ -16,6 +16,16 @@ export default function CategoryPage() {
   }
 
   // Collect all photos from all albums matching the category, with album info
+  // Fisher-Yates shuffle
+  function shuffleArray(array) {
+    const arr = array.slice();
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
   const photosWithAlbum = useMemo(() => {
     let photos = albums.flatMap(album =>
       album.photos
@@ -28,12 +38,9 @@ export default function CategoryPage() {
         }))
     );
 
-    if (sortByRecent) {
-      photos.sort((a, b) => new Date(b.albumDate) - new Date(a.albumDate));
-    }
-
-    return photos;
-  }, [category, sortByRecent]);
+    // Remove sorting by recent, shuffle instead
+    return shuffleArray(photos);
+  }, [category]);
 
   if (!slug) return null;
 

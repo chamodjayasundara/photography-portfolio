@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { albums } from "@/data/albums";
+import SEO from "@/components/SEO";
 
 const CATEGORIES = ["All", "Properties", "Travel", "Product", "Lifestyle", "Food"];
 
@@ -28,7 +29,13 @@ export default function Projects() {
   }, [query, activeCat]);
 
   return (
-    <main className="min-h-screen bg-black text-white py-24 px-6">
+    <>
+      <SEO
+        title="Projects - Photography Portfolio"
+        description="Browse the complete portfolio of Chamod Jayasundara. View luxury property photography projects including hotels, resorts, villas, and commercial spaces in Sri Lanka and worldwide."
+        url="https://chamodjayasundaraphotography.com/projects"
+      />
+      <main className="min-h-screen bg-black text-white py-24 px-6">
       <div className="container mx-auto max-w-7xl">
         <h1 className="text-4xl md:text-5xl font-light mb-8 text-center">
           All <span style={{ color: "#f15a24" }}>Projects</span>
@@ -90,5 +97,6 @@ export default function Projects() {
         )}
       </div>
     </main>
+    </>
   );
 }

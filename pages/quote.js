@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiCamera, FiHome, FiShoppingBag, FiCoffee, FiUsers, FiCheck } from "react-icons/fi";
+import SEO from "@/components/SEO";
 
 const services = [
   { id: "architecture", name: "Architecture Photography", icon: FiHome },
@@ -169,7 +170,13 @@ export default function Quote() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-24 px-6">
+    <>
+      <SEO
+        title="Get a Quote - Photography Services"
+        description="Request a custom quote for professional photography services. Architecture, lifestyle, product, and food photography packages available. Contact us for pricing."
+        url="https://chamodjayasundaraphotography.com/quote"
+      />
+      <div className="min-h-screen bg-black text-white py-24 px-6">
       <div className="container mx-auto max-w-5xl">
         {/* Header */}
         <motion.div
@@ -681,5 +688,6 @@ export default function Quote() {
         )}
       </div>
     </div>
+    </>
   );
 }

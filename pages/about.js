@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiCamera, FiVideo, FiAperture, FiMap } from "react-icons/fi";
+import SEO from "@/components/SEO";
 
 const services = [
   {
@@ -46,7 +47,13 @@ const testimonials = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <>
+      <SEO
+        title="About - Luxury Property & Hospitality Photographer"
+        description="Learn about Chamod Jayasundara, a professional photographer specializing in luxury villas, resorts, and hotels in Sri Lanka and worldwide. Offering architectural, aerial, and FPV cinematic photography services."
+        url="https://chamodjayasundaraphotography.com/about"
+      />
+      <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black z-10" />
@@ -287,5 +294,6 @@ export default function About() {
         </div>
       </section>
     </div>
+    </>
   );
 }

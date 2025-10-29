@@ -2,10 +2,17 @@ import { albums } from "@/data/albums";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import BrandsCarousel from "@/components/BrandsCarousel";
+import SEO from "@/components/SEO";
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-[#fdfdfd] text-gray-900">
+    <>
+      <SEO
+        title="Chamod Jayasundara Photography | Luxury Resort & Villa Photography"
+        description="Professional photography and videography for luxury villas, resorts, and hotels in Sri Lanka and worldwide. Specializing in architectural, aerial, and FPV cinematic tours."
+        url="https://chamodjayasundaraphotography.com"
+      />
+      <div className="flex flex-col bg-[#fdfdfd] text-gray-900">
       {/* Hero Section */}
       <section className="hero-section h-screen relative overflow-hidden">
         {/* Background image */}
@@ -184,5 +191,6 @@ export default function Home() {
         </motion.div>
       </section>
     </div>
+    </>
   );
 }

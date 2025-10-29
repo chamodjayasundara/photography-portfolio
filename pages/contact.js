@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
 import { FiPhone, FiMail, FiInstagram, FiFacebook } from "react-icons/fi";
+import SEO from "@/components/SEO";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-black text-white py-24 px-6">
+    <>
+      <SEO
+        title="Contact - Get in Touch"
+        description="Contact Chamod Jayasundara for professional photography services. Specializing in luxury property, hotel, and resort photography in Sri Lanka and worldwide. Get in touch today."
+        url="https://chamodjayasundaraphotography.com/contact"
+      />
+      <div className="min-h-screen bg-black text-white py-24 px-6">
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <motion.div
@@ -118,5 +125,6 @@ export default function Contact() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }
