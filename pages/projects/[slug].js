@@ -1,6 +1,7 @@
 import { albums } from "@/data/albums";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 export default function AlbumDetail() {
   const router = useRouter();
@@ -24,8 +25,34 @@ export default function AlbumDetail() {
     );
   }
 
+  // Structured data for the project
+  const projectStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": album.title,
+    "description": album.description,
+    "image": album.photos.map(photo => `https://chamodjayasundaraphotography.com${photo.src}`),
+    "creator": {
+      "@type": "Person",
+      "name": "Chamod Jayasundara",
+      "jobTitle": "Professional Photographer",
+      "url": "https://chamodjayasundaraphotography.com"
+    },
+    "datePublished": album.date,
+    "url": `https://chamodjayasundaraphotography.com/projects/${album.slug}`,
+    "genre": album.albumCategory,
+    "keywords": `${album.albumCategory}, ${album.title}, photography, Sri Lanka`
+  };
+
   return (
     <>
+      <SEO
+        title={`${album.title} - Photography Project`}
+        description={album.description}
+        url={`https://chamodjayasundaraphotography.com/projects/${album.slug}`}
+        image={album.photos[0]?.src}
+        structuredData={projectStructuredData}
+      />
       <div className="min-h-screen bg-black text-white py-24 px-6">
         {/* Header - Centered Title & Description */}
         <div className="container mx-auto max-w-4xl text-center mb-16">
@@ -65,7 +92,13 @@ export default function AlbumDetail() {
                     draggable="false"
                     onContextMenu={(e) => e.preventDefault()}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="p-4 w-full">
+                      <p className="text-white text-sm md:text-base font-light tracking-wide">
+                        {album.title} | CHAMOD JAYASUNDARA PHOTOGRAPHY ©
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}

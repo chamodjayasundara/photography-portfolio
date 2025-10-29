@@ -1,7 +1,7 @@
 import { albums } from "../../data/albums";
 
 export default function handler(req, res) {
-  const baseUrl = "https://chamodjayasundara.com"; // Update with your actual domain
+  const baseUrl = "https://chamodjayasundaraphotography.com"; // Update with your actual domain
 
   // Static pages
   const staticPages = [

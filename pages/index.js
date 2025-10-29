@@ -11,6 +11,7 @@ export default function Home() {
         title="Chamod Jayasundara Photography | Luxury Resort & Villa Photography"
         description="Professional photography and videography for luxury villas, resorts, and hotels in Sri Lanka and worldwide. Specializing in architectural, aerial, and FPV cinematic tours."
         url="https://chamodjayasundaraphotography.com"
+        image="https://chamodjayasundaraphotography.com/images/myself.jpg"
       />
       <div className="flex flex-col bg-[#fdfdfd] text-gray-900">
       {/* Hero Section */}

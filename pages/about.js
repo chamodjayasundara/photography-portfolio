@@ -46,12 +46,59 @@ const testimonials = [
 ];
 
 export default function About() {
+  // Structured data for about page with reviews
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Chamod Jayasundara Photography",
+    "image": "https://chamodjayasundaraphotography.com/images/myself.jpg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chamodjayasundaraphotography.com/images/Chamod_Jayasundara_Logo.png",
+      "width": "200",
+      "height": "50"
+    },
+    "url": "https://chamodjayasundaraphotography.com",
+    "telephone": "+94761937301",
+    "email": "chamodjayasundaraphotography@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "LK"
+    },
+    "sameAs": [
+      "https://www.instagram.com/chamodjayasundaraphotography",
+      "https://www.facebook.com/share/17mCTCwf4Y"
+    ],
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": testimonials.length.toString()
+    },
+    "review": testimonials.map(testimonial => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": testimonial.name
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": testimonial.text,
+      "datePublished": "2025-01-01"
+    }))
+  };
+
   return (
     <>
       <SEO
         title="About - Luxury Property & Hospitality Photographer"
         description="Learn about Chamod Jayasundara, a professional photographer specializing in luxury villas, resorts, and hotels in Sri Lanka and worldwide. Offering architectural, aerial, and FPV cinematic photography services."
         url="https://chamodjayasundaraphotography.com/about"
+        image="https://chamodjayasundaraphotography.com/images/myself.jpg"
+        structuredData={aboutStructuredData}
       />
       <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
@@ -133,10 +180,11 @@ export default function About() {
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
                     src="/images/myself.jpg"
-                    alt="Chamod Jayasundara"
+                    alt="Chamod Jayasundara - Professional Photographer specializing in luxury property and hospitality photography"
                     width={600}
                     height={700}
                     className="w-full h-auto object-cover"
+                    priority
                   />
                 </div>
               </div>
