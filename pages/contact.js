@@ -107,7 +107,7 @@ export default function Contact() {
             Ready to Work Together?
           </h2>
           <p className="text-gray-400 mb-6">
-            Whether it's capturing your property, products, or special moments, I'm here to bring your vision to life.
+            Whether it's capturing your property, products, or any commercial requirement, I'm here to bring your vision to life.
           </p>
           <a
             href="mailto:chamodjayasundaraphotography@gmail.com"

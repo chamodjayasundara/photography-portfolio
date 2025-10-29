@@ -51,7 +51,7 @@ export default function Layout({ children }) {
           <Link href="/" className="block" aria-label="Home">
             <Image
               src="/images/Chamod_Jayasundara_Logo.png"
-              alt="Chamod Jayasundara logo"
+              alt="Chamod Jayasundara Photography logo"
               width={200}
               height={32}
               priority
@@ -108,11 +108,27 @@ export default function Layout({ children }) {
             </div>
 
             <Link 
+              href="/about" 
+              className="hover:opacity-70 transition"
+              style={isActivePath('/about') ? { color: '#f15a24' } : {}}
+            >
+              About
+            </Link>
+
+            <Link 
               href="/contact" 
               className="hover:opacity-70 transition"
               style={isActivePath('/contact') ? { color: '#f15a24' } : {}}
             >
               Contact
+            </Link>
+
+            <Link 
+              href="/quote" 
+              className="bg-[#f15a24] hover:bg-[#d14b1a] text-white px-6 py-2 rounded-full transition-all duration-300 font-medium shadow-lg hover:shadow-xl"
+              style={isActivePath('/quote') ? { backgroundColor: '#d14b1a' } : {}}
+            >
+              Get a Quote
             </Link>
           </div>
 
@@ -202,11 +218,28 @@ export default function Layout({ children }) {
                 </div>
 
                 <Link 
+                  href="/about" 
+                  onClick={() => setIsOpen(false)}
+                  style={isActivePath('/about') ? { color: '#f15a24' } : {}}
+                >
+                  About
+                </Link>
+
+                <Link 
                   href="/contact" 
                   onClick={() => setIsOpen(false)}
                   style={isActivePath('/contact') ? { color: '#f15a24' } : {}}
                 >
                   Contact
+                </Link>
+
+                <Link 
+                  href="/quote" 
+                  onClick={() => setIsOpen(false)}
+                  className="bg-[#f15a24] hover:bg-[#d14b1a] text-white px-6 py-3 rounded-full text-center transition-all duration-300 font-medium shadow-lg mt-4"
+                  style={isActivePath('/quote') ? { backgroundColor: '#d14b1a' } : {}}
+                >
+                  Get a Quote
                 </Link>
               </nav>
             </motion.div>
