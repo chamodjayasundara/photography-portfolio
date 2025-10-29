@@ -2,13 +2,19 @@ import { useRouter } from "next/router";
 import { albums } from "@/data/albums";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 export default function CategoryPage() {
   const router = useRouter();
   const { slug } = router.query;
   const category = slug?.toLowerCase();
   const [sortByRecent, setSortByRecent] = useState(true); // Default to Most Recent
+  const [mounted, setMounted] = useState(false);
+
+  // Wait for client-side mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Capitalize first letter helper
   function capitalizeFirstLetter(string) {
@@ -38,9 +44,12 @@ export default function CategoryPage() {
         }))
     );
 
-    // Remove sorting by recent, shuffle instead
-    return shuffleArray(photos);
-  }, [category]);
+    // Only shuffle on client side after mount to avoid hydration mismatch
+    if (mounted) {
+      return shuffleArray(photos);
+    }
+    return photos;
+  }, [category, mounted]);
 
   if (!slug) return null;
 

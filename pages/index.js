@@ -1,7 +1,14 @@
 import { albums } from "@/data/albums";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import BrandsCarousel from "@/components/BrandsCarousel";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+
+// Lazy load BrandsCarousel below the fold
+const BrandsCarousel = dynamic(() => import("@/components/BrandsCarousel"), {
+  loading: () => <div className="min-h-[70vh] py-32 bg-white" />,
+});
+
 import SEO from "@/components/SEO";
 
 export default function Home() {
@@ -17,9 +24,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero-section h-screen relative overflow-hidden">
         {/* Background image */}
-        <img
+        <Image
           src="/images/hero.jpg"
           alt="Hero"
+          fill
+          priority
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -125,10 +135,13 @@ export default function Home() {
                 >
                   <Link href={`/projects/${album.slug}`} passHref>
                     <div className="group overflow-hidden rounded-2xl shadow-2xl relative cursor-pointer">
-                      <img
+                      <Image
                         src={album.photos[0].src}
                         alt={album.title}
+                        width={800}
+                        height={400}
                         className="w-full h-[400px] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                       <div className="absolute bottom-8 left-8 right-8 text-white">

@@ -124,3 +124,22 @@ html {
 .text-cream {
   color: var(--hero-cream) !important;
 }
+
+/* Brands Carousel - CSS Animation (much more performant than JS) */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brands-scroll {
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.brands-scroll:hover {
+  animation-play-state: paused;
+}

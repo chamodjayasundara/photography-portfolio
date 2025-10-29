@@ -1,9 +1,6 @@
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function BrandsCarousel() {
-  const scrollRef = useRef(null);
-
   const brands = [
     { name: "Brand 1", logo: "/images/brands/ekhol1.jpg" },
     { name: "Brand 2", logo: "/images/brands/oakray.png" },
@@ -15,36 +12,7 @@ export default function BrandsCarousel() {
     { name: "Brand 8", logo: "/images/brands/terrace.jpeg" },
     { name: "Brand 9", logo: "/images/brands/hillparadise.jpeg" },
     { name: "Brand 10", logo: "/images/brands/bowatte.jpg" },
-
-    // Add more brands as needed
   ];
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    // Smooth, frame-based fast auto-scroll (no manual override)
-    let rafId;
-    let lastTs = performance.now();
-    const SPEED_PX_PER_SEC = 200; // much faster auto-scroll
-
-    const tick = (ts) => {
-      const dt = (ts - lastTs) / 1000; // seconds
-      lastTs = ts;
-
-      const half = scrollContainer.scrollWidth / 2 || 1;
-      const next = (scrollContainer.scrollLeft + SPEED_PX_PER_SEC * dt) % half;
-      scrollContainer.scrollLeft = next;
-
-      rafId = requestAnimationFrame(tick);
-    };
-
-    rafId = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
 
   return (
     <section className="min-h-[70vh] py-32 bg-white flex flex-col justify-center">
@@ -53,12 +21,9 @@ export default function BrandsCarousel() {
           <span style={{ color: '#f15a24' }}>Brands</span> I've Worked With
         </h2>
 
-        <div
-          className="overflow-hidden select-none"
-          ref={scrollRef}
-        >
-          <div className="flex items-center gap-12 md:gap-16" style={{ width: 'max-content' }}>
-            {/* Duplicate brands for infinite scroll effect */}
+        <div className="overflow-hidden select-none">
+          <div className="brands-scroll flex items-center gap-12 md:gap-16">
+            {/* Duplicate brands twice for infinite scroll effect */}
             {[...brands, ...brands].map((brand, index) => (
               <div
                 key={index}
@@ -70,13 +35,13 @@ export default function BrandsCarousel() {
                   width={120}
                   height={120}
                   className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
                 />
               </div>
             ))}
           </div>
         </div>
       </div>
-
     </section>
   );
 }

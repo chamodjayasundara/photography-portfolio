@@ -1,0 +1,14 @@
+# Target modern browsers to reduce polyfills and transpilation
+# This significantly reduces JavaScript bundle size
+
+[production]
+chrome >= 92
+edge >= 92
+firefox >= 90
+safari >= 15
+ios >= 15
+
+[development]
+last 1 chrome version
+last 1 firefox version
+last 1 safari version

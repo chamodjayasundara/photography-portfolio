@@ -15,8 +15,12 @@ export default function Layout({ children }) {
 
   // Transparent navbar that becomes solid on scroll
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 50);
+    handleScroll(); // Check initial scroll position
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -151,10 +155,11 @@ export default function Layout({ children }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-black/60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(false)}
           >
             <motion.div
@@ -162,7 +167,7 @@ export default function Layout({ children }) {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+              transition={{ type: "tween", duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-end mb-8">

@@ -1,7 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { albums } from "@/data/albums";
-import SEO from "@/components/SEO";
+import dynamic from "next/dynamic";
+
+const SEO = dynamic(() => import("@/components/SEO"), { ssr: true });
 
 const CATEGORIES = ["All", "Properties", "Travel", "Product", "Lifestyle", "Food"];
 
@@ -75,17 +78,25 @@ export default function Projects() {
           <p className="opacity-70">No projects found.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {filtered.map((album) => (
+            {filtered.map((album, index) => (
               <Link key={album.title + album.date} href={`/projects/${album.slug}`}>
                 <div className="group overflow-hidden rounded-2xl shadow-2xl relative cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-zinc-600">
-                  <img
-                    src={album.photos[0].src}
-                    alt={album.title}
-                    className="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
+                  <div className="relative w-full h-56 overflow-hidden">
+                    <Image
+                      src={album.photos[0].src}
+                      alt={album.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out will-change-transform"
+                      priority={index === 0}
+                      quality={index === 0 ? 85 : 75}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%2318181b' width='400' height='300'/%3E%3C/svg%3E"
+                    />
+                  </div>
                   <div className="p-4">
                     <div className="text-xs uppercase tracking-wide opacity-70 mb-1">
-                      {album.albumCategory} • {new Date(album.date).toLocaleDateString()}
+                      {album.albumCategory} • {album.date}
                     </div>
                     <h2 className="font-semibold text-lg">{album.title}</h2>
                     <p className="text-sm opacity-80 mt-1">{album.description}</p>
