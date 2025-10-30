@@ -136,7 +136,7 @@ html {
 }
 
 .brands-scroll {
-  animation: scroll 40s linear infinite;
+  animation: scroll 10s linear infinite;
   will-change: transform;
 }
 
