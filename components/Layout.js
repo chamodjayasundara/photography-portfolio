@@ -59,7 +59,7 @@ export default function Layout({ children }) {
               width={200}
               height={32}
               priority
-              className={`h-12 w-auto md:h-14 transition ${scrolled ? "" : ""}`}
+              className={`h-12 w-auto md:h-14 transition ${scrolled ? "" : "brightness-[2]"}`}
             />
           </Link>
 
