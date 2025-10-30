@@ -45,7 +45,10 @@ ${allPages
   .join("\n")}
 </urlset>`;
 
-  res.setHeader("Content-Type", "text/xml");
-  res.write(sitemap);
-  res.end();
+  // Set headers
+  res.setHeader("Content-Type", "text/xml; charset=UTF-8");
+  res.setHeader("Cache-Control", "s-maxage=30, stale-while-revalidate");
+  
+  // Send response
+  res.status(200).send(sitemap);
 }

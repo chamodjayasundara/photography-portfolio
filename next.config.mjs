@@ -64,6 +64,16 @@ const nextConfig = {
       },
     ];
   },
+
+  // Add rewrite for sitemap
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap.xml',
+      },
+    ];
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);
