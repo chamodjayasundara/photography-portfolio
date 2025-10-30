@@ -203,8 +203,7 @@ export const albums = [
       { src: "/images/albums/hillparadise/7.jpg", category: "Architecture" },
       { src: "/images/albums/hillparadise/8.jpg", category: "Architecture" },
       { src: "/images/albums/hillparadise/9.jpg", category: "Architecture" },
-      { src: "/images/albums/hillparadise/10.jpg", category: "Architecture" },
-      { src: "/images/albums/hillparadise/11.jpg", category: "Architecture" }
+      { src: "/images/albums/hillparadise/10.jpg", category: "Architecture" }
     ]
   },
   {
