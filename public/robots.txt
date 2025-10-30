@@ -2,8 +2,11 @@
 User-agent: *
 Allow: /
 
-# Disallow admin or private pages (if any)
+# Allow API access for sitemap
+Allow: /api/sitemap.xml
+
+# Disallow other API routes
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://chamodjayasundaraphotography.com/sitemap.xml
+Sitemap: https://chamodjayasundaraphotography.com/api/sitemap.xml

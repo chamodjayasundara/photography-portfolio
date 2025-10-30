@@ -40,7 +40,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Clash Display', Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }

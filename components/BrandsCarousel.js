@@ -21,13 +21,32 @@ export default function BrandsCarousel() {
           <span style={{ color: '#f15a24' }}>Brands</span> I've Worked With
         </h2>
 
-        <div className="overflow-hidden select-none">
+        {/* Mobile: horizontal scroll, Desktop: animated carousel */}
+  <div className="md:hidden overflow-x-auto select-none scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex items-center gap-6 px-2" style={{ minWidth: 'max-content' }}>
+            {brands.map((brand, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-32 h-32 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-center p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  width={120}
+                  height={120}
+                  className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="hidden md:block overflow-hidden select-none">
           <div className="brands-scroll flex items-center gap-12 md:gap-16">
-            {/* Duplicate brands twice for infinite scroll effect */}
             {[...brands, ...brands].map((brand, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-center p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+                className="flex-shrink-0 w-40 h-40 bg-gray-50 rounded-lg border border-gray-200 flex items-center justify-center p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-300"
               >
                 <Image
                   src={brand.logo}

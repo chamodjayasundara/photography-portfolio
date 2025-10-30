@@ -34,6 +34,13 @@ const testimonials = [
     text: "It was an absolute pleasure working with Chamod Jayasundara during our recent property shoot at Victoria Golf Resort. He beautifully captured the essence of the resort, from our rooms and restaurant to the golf course and clubhouse - with a truly artistic eye. The final images were nothing short of stunning, perfectly reflecting the natural charm and elegance of the property. Chamod was incredibly professional, flexible, and easy to work with, allowing our daily operations to continue seamlessly while he worked around the resort. We're truly grateful for his effort and creativity, and look forward to collaborating again in the future!",
     image: "/images/testimonials/client1.jpg"
   },
+  {
+    name: "Gihan Thenuwara",
+    designation: "Head of Digital & eMarketing",
+    company: "Oak Ray Hotels & Resorts, Seven Angels Collection and Oak Ray Group of Companies",
+    text: "Working with Chamod was an absolute pleasure! His passion for photography truly shines through every shot. He’s professional, flexible, and full of energy, always going the extra mile to capture the perfect moment. Beyond his skill behind the lens, Chamod is down-to-earth, friendly, and incredibly easy to work with. I have no hesitation in recommending him for any hotel, resort, or villa project, he knows exactly what he’s doing and delivers outstanding results every time",
+    image: "/images/testimonials/client2.jpg"
+  },
   /*
   {
     name: "Client Name",
@@ -270,40 +277,83 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-[#f15a24] transition-all duration-300"
-              >
-                <div className="mb-6">
-                  <svg
-                    className="w-10 h-10 text-[#f15a24]"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+          <div className="block">
+            {/* Mobile: Horizontal scroll carousel */}
+            <div className="block md:hidden w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+              <div className="flex gap-6 px-2 pb-4" style={{ width: 'max-content' }}>
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.15 }}
+                    viewport={{ once: true }}
+                    className="w-[320px] flex-shrink-0 snap-center bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-[#f15a24] transition-all duration-300"
                   >
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                </div>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  "{testimonial.text}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#f15a24] flex items-center justify-center text-white font-semibold">
-                    {testimonial.name.charAt(0)}
+                    <div className="mb-6">
+                      <svg
+                        className="w-10 h-10 text-[#f15a24]"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
+                    </div>
+                    <p className="text-gray-300 mb-6 leading-relaxed">
+                      "{testimonial.text}"
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-[#f15a24] flex items-center justify-center text-white font-semibold text-xl" style={{ aspectRatio: '1/1' }}>
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-medium">{testimonial.name}</p>
+                        <p className="text-sm text-gray-400">{testimonial.designation}</p>
+                        <p className="text-sm text-gray-400">{testimonial.company}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Grid Layout */}
+            {/* Desktop Grid Layout */}
+            <div className="hidden md:grid grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-[#f15a24] transition-all duration-300"
+                >
+                  <div className="mb-6">
+                    <svg
+                      className="w-10 h-10 text-[#f15a24]"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
                   </div>
-                  <div>
-                    <p className="font-medium">{testimonial.name}</p>
-                    <p className="text-sm text-gray-400">{testimonial.designation}</p>
-                    <p className="text-sm text-gray-400">{testimonial.company}</p>
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    "{testimonial.text}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#f15a24] flex items-center justify-center text-white font-semibold text-xl" style={{ aspectRatio: '1/1' }}>
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-medium">{testimonial.name}</p>
+                      <p className="text-sm text-gray-400">{testimonial.designation}</p>
+                      <p className="text-sm text-gray-400">{testimonial.company}</p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
