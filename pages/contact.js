@@ -77,9 +77,9 @@ export default function Contact() {
               <div className="bg-[#f15a24] p-4 rounded-full group-hover:scale-110 transition-transform duration-300">
                 <FiInstagram size={24} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="text-sm text-gray-400 mb-1">Instagram</h3>
-                <p className="text-lg font-medium">@chamodjayasundaraphotography</p>
+                <p className="text-lg font-medium truncate">@chamodjayasundaraphotography</p>
               </div>
             </div>
           </a>
