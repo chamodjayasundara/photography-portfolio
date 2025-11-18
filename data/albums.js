@@ -1,6 +1,43 @@
 // ONLY export the albums array
 export const albums = [
   {
+    slug: "ellerton",
+    title: "Ellerton Bungalow",
+    description: "Assignment type : Hotel Photography",
+    albumCategory: "Properties",
+    date: "2025-11-15",
+    photos: [
+      { src: "/images/albums/ellerton/1.jpg", category: "Lifestyle" },
+      { src: "/images/albums/ellerton/2.jpg", category: "Food" },
+      { src: "/images/albums/ellerton/3.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/4.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/5.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/6.jpg", category: "Lifestyle" },
+      { src: "/images/albums/ellerton/7.jpg", category: "Lifestyle" },
+      { src: "/images/albums/ellerton/8.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/9.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/10.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/11.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/12.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/13.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/14.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/15.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/16.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/17.jpg", category: "Lifestyle" },
+      { src: "/images/albums/ellerton/18.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/19.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/20.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/21.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/22.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/23.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/24.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/25.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/26.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/27.jpg", category: "Architecture" },
+      { src: "/images/albums/ellerton/28.jpg", category: "Architecture" }
+    ]
+  },
+  {
     slug: "Golf-resort",
     title: "Victoria Golf Resort",
     description: "Assignment type : Resort Photography",
