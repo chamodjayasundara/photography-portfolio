@@ -8,8 +8,8 @@ export default function SEO({
   type = "website",
   structuredData = null
 }) {
-  const fullTitle = title.includes("Chamod Jayasundara") 
-    ? title 
+  const fullTitle = title.includes("Chamod Jayasundara")
+    ? title
     : `${title} | Chamod Jayasundara Photography`;
 
   // Default structured data for the website
@@ -42,6 +42,20 @@ export default function SEO({
       "https://www.instagram.com/chamodjayasundaraphotography",
       "https://www.facebook.com/share/17mCTCwf4Y"
     ],
+    "knowsAbout": [
+      "Architectural Photography",
+      "Luxury Villa Photography",
+      "Hotel Interiors",
+      "Resort Marketing Visuals",
+      "Sri Lanka Hospitality Industry",
+      "Drone Aerial Photography",
+      "FPV Cinematic Tours"
+    ],
+    "jobTitle": "Luxury Resort & Villa Photographer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Chamod Jayasundara Photography"
+    },
     "serviceType": [
       "Architectural Photography",
       "Hotel Photography",
