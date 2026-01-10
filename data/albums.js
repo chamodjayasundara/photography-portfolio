@@ -122,6 +122,22 @@ export const albums = [
     ]
   },
   {
+    slug: "xiangyun",
+    title: "Xiang Yun Chinese Restaurant",
+    description: "Assignment type : Food Photography",
+    albumCategory: "Food",
+    date: "2025-07-15",
+    photos: [
+      { src: "/images/albums/xiangyun/CJJ_8847.jpg", category: "Food" },
+      { src: "/images/albums/xiangyun/CJJ_8883.jpg", category: "Food" },
+      { src: "/images/albums/xiangyun/CJJ_8989.jpg", category: "Food" },
+      { src: "/images/albums/xiangyun/CJJ_8994.jpg", category: "Food" },
+      { src: "/images/albums/xiangyun/CJJ_9013.jpg", category: "Food" },
+      { src: "/images/albums/xiangyun/CJJ_9055.jpg", category: "Food" },
+      { src: "/images/albums/xiangyun/CJJ_9089.jpg", category: "Food" }
+    ]
+  },
+  {
     slug: "ekhoella",
     title: "EKHO Ella",
     description: "Assignment type : Hotel Photography",
