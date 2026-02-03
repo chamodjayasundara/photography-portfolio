@@ -1,6 +1,28 @@
 // ONLY export the albums array
 export const albums = [
   {
+    slug: "ekhosigiriya",
+    title: "EKHO Sigiriya",
+    description: "Assignment type : Hotel Photography",
+    albumCategory: "Properties",
+    date: "2026-02-03",
+    photos: [
+      { src: "/images/albums/ekhosigiriya/1.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/2.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/3.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/4.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/5.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/6.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/7.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/8.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/9.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/10.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/11.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/12.jpg", category: "Architecture" },
+      { src: "/images/albums/ekhosigiriya/13.jpg", category: "Architecture" }
+    ]
+  },
+  {
     slug: "ellerton",
     title: "Ellerton Bungalow",
     description: "Assignment type : Hotel Photography",
