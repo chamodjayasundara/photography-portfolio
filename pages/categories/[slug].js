@@ -2,19 +2,12 @@ import { useRouter } from "next/router";
 import { albums } from "@/data/albums";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
 
 export default function CategoryPage() {
   const router = useRouter();
   const { slug } = router.query;
   const category = slug?.toLowerCase();
-  const [sortByRecent, setSortByRecent] = useState(true); // Default to Most Recent
-  const [mounted, setMounted] = useState(false);
-
-  // Wait for client-side mount
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Capitalize first letter helper
   function capitalizeFirstLetter(string) {
@@ -22,18 +15,10 @@ export default function CategoryPage() {
   }
 
   // Collect all photos from all albums matching the category, with album info
-  // Fisher-Yates shuffle
-  function shuffleArray(array) {
-    const arr = array.slice();
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
+  // Photos are pre-shuffled at build time for consistent ordering
 
   const photosWithAlbum = useMemo(() => {
-    let photos = albums.flatMap(album =>
+    return albums.flatMap(album =>
       album.photos
         .filter(photo => photo.category.toLowerCase() === category)
         .map(photo => ({
@@ -43,13 +28,7 @@ export default function CategoryPage() {
           albumDate: album.date
         }))
     );
-
-    // Only shuffle on client side after mount to avoid hydration mismatch
-    if (mounted) {
-      return shuffleArray(photos);
-    }
-    return photos;
-  }, [category, mounted]);
+  }, [category]);
 
   if (!slug) return null;
 

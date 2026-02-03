@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "node scripts/shuffle-albums.js && next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "cross-env ANALYZE=true next build",
+    "shuffle": "node scripts/shuffle-albums.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
