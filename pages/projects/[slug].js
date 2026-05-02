@@ -50,7 +50,7 @@ export default function AlbumDetail() {
         title={`${album.title} - Photography Project`}
         description={album.description}
         url={`https://chamodjayasundaraphotography.com/projects/${album.slug}`}
-        image={album.photos[0]?.src}
+        image={album.coverImage || album.photos[0]?.src}
         structuredData={projectStructuredData}
       />
       <div className="min-h-screen bg-black text-white py-24 px-6">

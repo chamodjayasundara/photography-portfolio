@@ -120,7 +120,7 @@ export default function Home() {
           {/* Albums that scroll up two at a time side by side */}
           <div className="relative z-10 container mx-auto max-w-7xl space-y-12">
             {/* CHANGE FEATURED ALBUMS BELOW*/}
-            {albums.filter(album => ['ellerton', 'queens', 'Golf-resort', 'ekhoella'].includes(album.slug)).reduce((rows, album, i) => {
+            {albums.filter(album => ['ekhosigiriya', 'queens', 'Golf-resort', 'ekhoella'].includes(album.slug)).reduce((rows, album, i) => {
               if (i % 2 === 0) rows.push([album]);
               else rows[rows.length - 1].push(album);
               return rows;
@@ -137,7 +137,7 @@ export default function Home() {
                     <Link href={`/projects/${album.slug}`} passHref>
                       <div className="group overflow-hidden rounded-2xl shadow-2xl relative cursor-pointer">
                         <Image
-                          src={album.photos[0].src}
+                          src={album.coverImage || album.photos[0].src}
                           alt={album.title}
                           width={800}
                           height={400}
