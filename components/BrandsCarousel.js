@@ -2,6 +2,7 @@ import Image from "next/image";
 
 export default function BrandsCarousel() {
   const brands = [
+    { name: "Brand 11", logo: "/images/brands/otherlandg.jpg" },
     { name: "Brand 1", logo: "/images/brands/ekhol1.jpg" },
     { name: "Brand 2", logo: "/images/brands/oakray.png" },
     { name: "Brand 3", logo: "/images/brands/queens.png" },
@@ -22,7 +23,7 @@ export default function BrandsCarousel() {
         </h2>
 
         {/* Mobile: horizontal scroll, Desktop: animated carousel */}
-  <div className="md:hidden overflow-x-auto select-none scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+        <div className="md:hidden overflow-x-auto select-none scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
           <div className="flex items-center gap-6 px-2" style={{ minWidth: 'max-content' }}>
             {brands.map((brand, index) => (
               <div
