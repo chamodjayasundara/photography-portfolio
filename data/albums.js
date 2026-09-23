@@ -1,6 +1,52 @@
 // ONLY export the albums array
 export const albums = [
   {
+    "slug": "otherlandgalle",
+    "title": "Otherland Galle",
+    "description": "Assignment type : Hotel Room Photography",
+    "albumCategory": "Properties",
+    "date": "2026-09-023",
+    "coverImage": "/images/albums/otherlandG/1.jpg",
+    "photos": [
+      {
+        "src": "/images/albums/otherlandG/1.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/2.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/3.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/4.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/5.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/6.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/7.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/8.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/otherlandG/9.jpg",
+        "category": "Architecture"
+      }
+    ]
+  },
+  {
     "slug": "ekhosigiriya",
     "title": "EKHO Sigiriya",
     "description": "Assignment type : Hotel Photography",
