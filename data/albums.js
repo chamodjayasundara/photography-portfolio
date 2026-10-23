@@ -1,11 +1,81 @@
 // ONLY export the albums array
 export const albums = [
   {
+    "slug": "sayudikwella",
+    "title": "Sayu Dikwella",
+    "description": "Assignment type : Villa Photography",
+    "albumCategory": "Properties",
+    "date": "2026-10-23",
+    "coverImage": "/images/albums/sayudikwella/1.jpg",
+    "photos": [
+      {
+        "src": "/images/albums/sayudikwella/1.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/2.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/3.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/4.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/5.jpg",
+        "category": "Lifestyle"
+      },
+      {
+        "src": "/images/albums/sayudikwella/6.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/7.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/8.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/9.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/10.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/11.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/12.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/13.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/14.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/sayudikwella/15.jpg",
+        "category": "Architecture"
+      }
+    ]
+  },
+  {
     "slug": "otherlandgalle",
     "title": "Otherland Galle",
     "description": "Assignment type : Hotel Room Photography",
     "albumCategory": "Properties",
-    "date": "2026-09-023",
+    "date": "2026-09-23",
     "coverImage": "/images/albums/otherlandG/1.jpg",
     "photos": [
       {
