@@ -78,11 +78,11 @@ export default function AlbumDetail() {
           <div className="columns-1 md:columns-2 gap-6 space-y-6">
             {album.photos.map((photo, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="break-inside-avoid"
+                key={photo.src}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="break-inside-avoid mb-6"
               >
                 <div className="group relative overflow-hidden rounded-lg">
                   <img
@@ -90,6 +90,8 @@ export default function AlbumDetail() {
                     alt={`${album.title} - ${index + 1}`}
                     className="w-full h-auto object-cover select-none pointer-events-none"
                     draggable="false"
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
                     onContextMenu={(e) => e.preventDefault()}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
