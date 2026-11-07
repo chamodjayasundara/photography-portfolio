@@ -1,6 +1,84 @@
 // ONLY export the albums array
 export const albums = [
   {
+    "slug": "ekholakehouse",
+    "title": "EKHO Lakehouse",
+    "description": "Assignment type : Hotel Photography",
+    "albumCategory": "Properties",
+    "date": "2026-11-07",
+    "coverImage": "/images/albums/ekholakehouse/1.jpg",
+    "photos": [
+      {
+        "src": "/images/albums/ekholakehouse/1.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/2.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/3.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/4.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/5.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/6.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/7.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/8.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/9.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/10.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/11.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/12.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/13.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/14.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/15.jpg",
+        "category": "Architecture"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/16.jpg",
+        "category": "Lifestyle"
+      },
+      {
+        "src": "/images/albums/ekholakehouse/17.jpg",
+        "category": "Architecture"
+      }
+    ]
+  },
+  {
     "slug": "sayudikwella",
     "title": "Sayu Dikwella",
     "description": "Assignment type : Villa Photography",
